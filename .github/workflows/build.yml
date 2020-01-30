@@ -9,7 +9,7 @@ jobs:
     if: "!(github.event_name == 'push' && contains(github.event.head_commit.message, '[skip ci]'))"
     strategy:
       matrix:
-        scheme: [base, science, tikz, heavy, full]
+        scheme: [latest]
     name: Build latex [${{ matrix.scheme }}-scheme]
     runs-on: ubuntu-latest
     env:
@@ -25,7 +25,7 @@ jobs:
           docker version -f '{{.Server.Experimental}}'
       - name: Build
         run: |
-          docker build -t latex-$SCHEME Dockerfile.$SCHEME
+          docker build -t latex-$SCHEME Dockerfile
       - name: Test
         run: |
           docker run --rm latex-$SCHEME pdflatex --version
