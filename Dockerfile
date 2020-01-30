@@ -62,7 +62,7 @@ COPY \
   texlive.profile \
   texlive_pgp_keys.asc
 
-RUN ./setup.sh
+RUN chmod +x ./setup.sh && ./setup.sh
 
 ADD entry.sh /entry.sh
 
