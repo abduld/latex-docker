@@ -1,5 +1,5 @@
-FROM ubuntu:xenial
-LABEL maintainer="carl.w.pearson@gmail.com"
+FROM ubuntu:latest
+LABEL maintainer="dakkak@illinois.edu"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-install-suggests \
@@ -17,6 +17,18 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
     python3-pip \
     texlive-base \
     xvfb \
+    ghostscript \
+    gnupg \
+    graphviz \
+    openjdk11-jre \
+    perl \
+    py-pygments \
+    python \
+    tar \
+    ttf-freefont \
+    fonts-font-awesome \
+    wget \
+    xz \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip \
@@ -32,6 +44,14 @@ RUN pip3 install --upgrade setuptools \
     && rm -r ~/.cache/pip
 RUN pip3 install pandas seaborn pyyaml statsmodels \
     && rm -r ~/.cache/pip
+
+RUN tlmgr install \
+      collection-fontsrecommended \
+      collection-fontutils \
+      biber \
+      biblatex \
+      latexmk \
+      texliveonfly
 
 ADD entry.sh /entry.sh
 
