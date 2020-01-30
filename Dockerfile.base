@@ -27,6 +27,7 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
 	fonts-freefont-ttf \
     fonts-font-awesome \
     wget \
+	xzdec \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip \
@@ -43,7 +44,12 @@ RUN pip3 install --upgrade setuptools \
 RUN pip3 install pandas seaborn pyyaml statsmodels \
     && rm -r ~/.cache/pip
 
+RUN wget -O /tmp/tlmgr-latest.sh http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh  && \
+    chmod +x /tmp/tlmgr-latest.sh && \
+    /tmp/tlmgr-latest.sh -- --upgrade
+
 RUN  tlmgr init-usertree && \
+	 tlmgr update --self --all && \
      tlmgr install \
       collection-fontsrecommended \
       collection-fontutils \
