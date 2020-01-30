@@ -51,16 +51,13 @@ mkdir -p /tmp/install-tl/installer
 tar --strip-components 1 -zxf /tmp/install-tl/install-tl-unx.tar.gz -C /tmp/install-tl/installer
 retry 3 /tmp/install-tl/installer/install-tl -scheme "$scheme" -profile=/texlive.profile
 
-# Install additional packages for non full scheme
-if [ "$scheme" != "full" ]; then
-  tlmgr install \
-    collection-fontsrecommended \
-    collection-fontutils \
-    biber \
-    biblatex \
-    latexmk \
-    texliveonfly
-fi
+tlmgr install \
+  collection-fontsrecommended \
+  collection-fontutils \
+  biber \
+  biblatex \
+  latexmk \
+  texliveonfly
 
 echo "==> Clean up"
 rm -rf \
