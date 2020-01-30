@@ -1,4 +1,4 @@
-FROM cwpearson/latex:science
+FROM dakkak/latex:science
 LABEL maintainer="carl.w.pearson@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive
 

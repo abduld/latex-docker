@@ -1,4 +1,4 @@
-FROM cwpearson/latex:base
+FROM dakkak/latex:base
 LABEL maintainer="carl.w.pearson@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive
 
