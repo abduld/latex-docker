@@ -7,6 +7,10 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
   graphviz \
   inkscape \
   make \
+  python \
+  python-dev \
+  python-tk \
+  python-pip \
   python3 \
   python3-dev \
   python3-tk \
@@ -53,7 +57,7 @@ COPY \
   setup.sh \
   texlive.profile \
   texlive_pgp_keys.asc \
-  /
+   /
 
 RUN chmod +x /setup.sh && /setup.sh
 
