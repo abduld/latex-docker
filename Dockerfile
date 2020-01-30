@@ -54,6 +54,12 @@ RUN pip3 install --upgrade setuptools \
 RUN pip3 install pandas seaborn pyyaml statsmodels \
   && rm -r ~/.cache/pip
 
+
+RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-install-suggests \
+  texlive-latex-extra \
+  && rm -rf /var/lib/apt/lists/*
+
+
 RUN  tlmgr init-usertree && \
   tlmgr install \
   collection-fontsrecommended \
