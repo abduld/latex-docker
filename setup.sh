@@ -23,20 +23,6 @@ retry() {
   done
 }
 
-echo "==> Install system packages"
-apk --no-cache add \
-  ghostscript \
-  gnupg \
-  graphviz \
-  openjdk11-jre \
-  perl \
-  py-pygments \
-  python \
-  tar \
-  ttf-freefont \
-  wget \
-  xz
-
 echo "==> Install TeXLive"
 mkdir -p /tmp/install-tl
 cd /tmp/install-tl
