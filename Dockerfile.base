@@ -24,10 +24,9 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
     perl \
     python-pygments \
     tar \
-    ttf-freefont \
+	fonts-freefont-ttf \
     fonts-font-awesome \
     wget \
-    xz \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip \
