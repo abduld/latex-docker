@@ -43,7 +43,8 @@ RUN pip3 install --upgrade setuptools \
 RUN pip3 install pandas seaborn pyyaml statsmodels \
     && rm -r ~/.cache/pip
 
-RUN tlmgr install \
+RUN  tlmgr init-usertree && \
+     tlmgr install \
       collection-fontsrecommended \
       collection-fontutils \
       biber \
