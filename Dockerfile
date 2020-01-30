@@ -52,9 +52,10 @@ ENV PATH="/opt/texlive/texdir/bin/x86_64-linuxmusl:${PATH}"
 COPY \
   setup.sh \
   texlive.profile \
-  texlive_pgp_keys.asc
+  texlive_pgp_keys.asc \
+  /
 
-RUN chmod +x ./setup.sh && ./setup.sh
+RUN chmod +x /setup.sh && /setup.sh
 
 ADD entry.sh /entry.sh
 
