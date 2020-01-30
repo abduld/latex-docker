@@ -15,7 +15,6 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
     python3-dev \
     python3-tk \
     python3-pip \
-    texlive-base \
     xvfb \
     ghostscript \
     gnupg \
@@ -28,6 +27,7 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
     fonts-font-awesome \
     wget \
 	xzdec \
+    libfile-fcntllock-perl equivs libwww-perl fontconfig unzip \ 
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip \
@@ -44,11 +44,16 @@ RUN pip3 install --upgrade setuptools \
 RUN pip3 install pandas seaborn pyyaml statsmodels \
     && rm -r ~/.cache/pip
 
-RUN wget -O /tmp/tlmgr-latest.sh http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh  && \
-    chmod +x /tmp/tlmgr-latest.sh && \
-    /tmp/tlmgr-latest.sh -- --upgrade
+# RUN wget -O /tmp/tlmgr-latest.sh http://mirror.ctan.org/systems/texlive/tlnet/update-tlmgr-latest.sh  && \
+# 	chmod +x /tmp/tlmgr-latest.sh && \
+# 	/tmp/tlmgr-latest.sh -- --upgrade
 
-RUN  tlmgr init-usertree && \
+ADD install-tl-ubuntu /tmp/
+RUN chmod +x /tmp/install-tl-ubuntu && \
+	/tmp/install-tl-ubuntu 
+
+RUN  tlmgr init-usertree && \ 
+	 tlmgr --usermode list && \
 	 tlmgr update --self --all && \
      tlmgr install \
       collection-fontsrecommended \
