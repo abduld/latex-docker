@@ -20,10 +20,9 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
     ghostscript \
     gnupg \
     graphviz \
-    openjdk11-jre \
+    default-jre \
     perl \
-    py-pygments \
-    python \
+    python-pygments \
     tar \
     ttf-freefont \
     fonts-font-awesome \
