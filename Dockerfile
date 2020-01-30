@@ -55,19 +55,14 @@ RUN pip3 install pandas seaborn pyyaml statsmodels \
   && rm -r ~/.cache/pip
 
 
-RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-install-suggests \
-  texlive-latex-extra \
-  && rm -rf /var/lib/apt/lists/*
+ENV PATH="/opt/texlive/texdir/bin/x86_64-linuxmusl:${PATH}"
 
+COPY \
+  setup.sh \
+  texlive.profile \
+  texlive_pgp_keys.asc
 
-RUN  tlmgr init-usertree && \
-  tlmgr install \
-  collection-fontsrecommended \
-  collection-fontutils \
-  biber \
-  biblatex \
-  latexmk \
-  texliveonfly
+RUN /setup.sh ${scheme}
 
 ADD entry.sh /entry.sh
 
