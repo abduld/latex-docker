@@ -57,7 +57,21 @@ tlmgr install \
   biber \
   biblatex \
   latexmk \
-  texliveonfly
+  texliveonfly \
+  amsmath \
+  babel \
+  carlisle \
+  ec \
+  geometry \
+  graphics \
+  hyperref \
+  lm  \
+  marvosym \
+  oberdiek \
+  parskip \
+  graphics-def \
+  url \
+  fontawesome
 
 echo "==> Clean up"
 rm -rf \
