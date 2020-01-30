@@ -29,11 +29,7 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
   fontconfig \
   unzip \
   dvidvi \
-  latexmk \
-  lacheck \
   tipa \
-  prerex \
-  latexdiff \
   && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip \
