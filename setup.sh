@@ -57,7 +57,8 @@ tlmgr install \
   parskip \
   graphics-def \
   url \
-  fontawesome
+  fontawesome \
+  xkeyval
 
 echo "==> Clean up"
 rm -rf \
