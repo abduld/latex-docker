@@ -37,6 +37,95 @@ mkdir -p /tmp/install-tl/installer
 tar --strip-components 1 -zxf /tmp/install-tl/install-tl-unx.tar.gz -C /tmp/install-tl/installer
 retry 3 /tmp/install-tl/installer/install-tl -scheme "$scheme" -profile=/texlive.profile
 
+# Backups only make the cache bigger
+tlmgr option -- autobackup 0
+
+# Update a cached version first (else later step might fail)
+tlmgr update --self
+
+# Needed for any use of texlua even if not testing LuaTeX
+tlmgr install luatex
+
+# The test framework itself
+tlmgr install l3build
+
+# Required to build plain and LaTeX formats:
+# TeX90 plain for unpacking, pdfLaTeX, LuaLaTeX and XeTeX for tests
+tlmgr install cm etex knuth-lib latex-bin tex tex-ini-files unicode-data \
+  xetex
+ 
+# Assuming a 'basic' font set up, metafont is required to avoid
+# warnings with some packages and errors with others
+tlmgr install metafont mfware texlive-scripts
+
+# Contrib packages: done as a block to avoid multiple calls to tlmgr
+tlmgr install   \
+  amsfonts      \
+  ec            \
+  fontspec      \
+  hyperref      \
+  iftex         \
+  kvoptions     \
+  oberdiek      \
+  pdftexcmds    \
+  lh            \
+  lualibs       \
+  luaotfload    \
+  tex-gyre      \
+  stringenc     \
+  url
+
+# Additional support for typesetting
+tlmgr install  \
+  amscls       \
+  atbegshi     \
+  atveryend    \
+  auxhook      \
+  babel-german \
+  bigintcalc   \
+  bitset       \
+  bookmark     \
+  cbfonts      \
+  csquotes     \
+  dvips        \
+  epstopdf     \
+  epstopdf-pkg \
+  etexcmds     \
+  etoolbox     \
+  fancyvrb     \
+  fc           \
+  geometry     \
+  gettitlestring \
+  graphics-def \
+  helvetic     \
+  hologo       \
+  hycolor      \
+  imakeidx     \
+  infwarerr    \
+  intcalc      \
+  kvdefinekeys \
+  kvoptions    \
+  kvsetkeys    \
+  letltxmacro  \
+  ltxcmds      \
+  ly1          \
+  makeindex    \
+  mflogo       \
+  palatino     \
+  pdfescape    \
+  pl           \
+  refcount     \
+  rerunfilecheck \
+  sauter       \
+  times        \
+  uniquecounter \
+  vntex        \
+  wasy         \
+  wsuipa       \
+  xkeyval      \
+  zref
+
+
 tlmgr install \
   collection-fontsrecommended \
   collection-fontutils \
@@ -58,7 +147,38 @@ tlmgr install \
   graphics-def \
   url \
   fontawesome \
-  xkeyval
+  xkeyval \
+  bbl2bib \
+  bib2gls \
+  bibdoiadd \
+  bibexport \
+  bibmradd \
+  biburl2doi \
+  bibzbladd \
+  convertgls2bib \
+  listbib \
+  ltx2crossrefxml \
+  multibibliography \
+  urlbst \
+  texmfstart \
+  texosquery \
+  texosquery-jre5 \
+  texosquery-jre8 \
+  thumbpdf \
+  tlcockpit \
+  tlshell \
+  typeoutfileinfo \
+  updmap \
+  updmap-sys \
+  updmap-user \
+  vpl2ovp \
+  vpl2vpl \
+  xhlatex \
+  xindex
+  
+  
+tlmgr install adjustbox babel-german babel-spanish background bidi collectbox csquotes everypage filehook footmisc footnotebackref framed fvextra letltxmacro ly1 mdframed mweights needspace pagecolor sourcecodepro sourcesanspro titling ucharcat ulem unicode-math upquote xecjk xurl zref
+
 
 echo "==> Clean up"
 rm -rf \
@@ -72,3 +192,10 @@ rm -rf \
   /texlive.profile \
   /texlive_pgp_keys.asc \
   /tmp/install-tl
+  
+
+pip install pandoc-plantuml-filter
+pip install pygments-mathematica
+
+# ensure we have the latest of the above packages
+tlmgr update --all
