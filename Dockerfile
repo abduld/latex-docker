@@ -85,14 +85,6 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
   texlive-xetex \
   && rm -rf /var/lib/apt/lists/*
 
-# Backups only make the cache bigger
-RUN tlmgr option -- autobackup 0
-
-# Update a cached version first (else later step might fail)
-RUN tlmgr update --self
-
-RUN tlmgr update --all
-
 RUN pip3 install --upgrade pip \
   && rm -r ~/.cache/pip
 RUN pip3 install --upgrade setuptools \
