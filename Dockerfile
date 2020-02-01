@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM nopreserveroot/latexmk-tlcontrib-sysfonts:2020.02.01
 LABEL maintainer="dakkak@illinois.edu"
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -36,6 +36,15 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
   tipa \
   && rm -rf /var/lib/apt/lists/*
 
+
+# Backups only make the cache bigger
+RUN tlmgr option -- autobackup 0
+
+# Update a cached version first (else later step might fail)
+RUN tlmgr update --self
+
+RUN tlmgr update --all
+
 RUN pip install --upgrade pip \
   && rm -r ~/.cache/pip
 RUN pip install --upgrade setuptools \
@@ -51,15 +60,8 @@ RUN pip3 install pandas seaborn pyyaml statsmodels \
   && rm -r ~/.cache/pip
 
 
-ENV PATH="/opt/texlive/texdir/bin/x86_64-linuxmusl:${PATH}"
-
-COPY \
-  setup.sh \
-  texlive.profile \
-  texlive_pgp_keys.asc \
-   /
-
-RUN chmod +x /setup.sh && /setup.sh
+RUN pip install pandoc-plantuml-filter
+RUN pip install pygments-mathematica
 
 ADD entry.sh /entry.sh
 
