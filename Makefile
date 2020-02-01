@@ -2,6 +2,7 @@ all: build_and_push
 
 build_base:
 	docker build . -f Dockerfile -t dakkak/latex:latest
+	./docker_slim/docker-slim build dakkak/latex:latest
 	docker tag dakkak/latex:latest dakkak/latex:20.04
 
 
