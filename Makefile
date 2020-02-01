@@ -7,6 +7,6 @@ build_base:
 
 push_base: build_base
 	docker push dakkak/latex:latest
-    docker push dakkak/latex:20.04
+	docker push dakkak/latex:20.04
 
 build_and_push: push_base
