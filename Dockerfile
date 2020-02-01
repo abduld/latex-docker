@@ -49,19 +49,15 @@ RUN pip install --upgrade pip \
   && rm -r ~/.cache/pip
 RUN pip install --upgrade setuptools \
   && rm -r ~/.cache/pip
-RUN pip install pandas seaborn pyyaml statsmodels \
+RUN pip install pandas seaborn pyyaml statsmodels pandoc-plantuml-filter pygments-mathematica \
   && rm -r ~/.cache/pip
 
 RUN pip3 install --upgrade pip \
   && rm -r ~/.cache/pip
 RUN pip3 install --upgrade setuptools \
   && rm -r ~/.cache/pip
-RUN pip3 install pandas seaborn pyyaml statsmodels \
+RUN pip3 install pandas seaborn pyyaml statsmodels pandoc-plantuml-filter pygments-mathematica \
   && rm -r ~/.cache/pip
-
-
-RUN pip install pandoc-plantuml-filter
-RUN pip install pygments-mathematica
 
 ADD entry.sh /entry.sh
 
