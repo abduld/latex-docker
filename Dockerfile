@@ -82,6 +82,13 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
   texlive-bibtex-extra \
   t1utils \
   texlive-full \
+  chktex \
+  biber \
+  cm-super  \
+  latexdiff \
+  lmodern \
+  t1utils \
+  texlive-xetex \
   && rm -rf /var/lib/apt/lists/*
 
 # Backups only make the cache bigger
