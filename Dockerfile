@@ -83,6 +83,7 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
   lmodern \
   t1utils \
   texlive-xetex \
+  texlive-xetex \
   && rm -rf /var/lib/apt/lists/*
 
 RUN tlmgr init-usertree
