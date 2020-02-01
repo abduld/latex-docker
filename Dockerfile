@@ -42,12 +42,10 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
   texlive-latex-recommended \
   lcdf-typetools \
   texlive-font-utils \
-  texlive-htmlxml \
   texlive-metapost \
   texlive-pstricks \
   purifyeps \
   dvidvi \
-  texlive-generic-extra \
   prosper \
   texlive-publishers \
   texlive-science \
@@ -57,11 +55,9 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
   texlive-humanities \
   texinfo \
   texlive-xetex \
-  texlive-math-extra \
   texlive-luatex \
   feynmf \
   texlive-fonts-extra \
-  texlive-plain-extra \
   chktex \
   texlive-extra-utils \
   lmodern \
@@ -71,7 +67,6 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
   texlive-games \
   texlive-latex-base \
   dvipng \
-  texlive-omega \
   latex-cjk-all \
   cm-super \
   latexmk \
