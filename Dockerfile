@@ -46,7 +46,6 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
   texlive-pstricks \
   purifyeps \
   dvidvi \
-  prosper \
   texlive-publishers \
   texlive-science \
   fragmaster \
