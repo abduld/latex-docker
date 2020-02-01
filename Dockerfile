@@ -1,4 +1,4 @@
-FROM nopreserveroot/latexmk-tlcontrib-sysfonts:2020.02.01
+FROM makisyu/texlive-2019:latest
 LABEL maintainer="dakkak@illinois.edu"
 ENV DEBIAN_FRONTEND noninteractive
 
