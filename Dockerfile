@@ -95,12 +95,9 @@ RUN tlmgr update --self
 
 RUN tlmgr update --all
 
-RUN pip3 install --upgrade pip \
-  && rm -r ~/.cache/pip3
-RUN pip3 install --upgrade setuptools \
-  && rm -r ~/.cache/pip3
-RUN pip3 install pandas seaborn pyyaml statsmodels pandoc-plantuml-filter pygments-mathematica \
-  && rm -r ~/.cache/pip3
+RUN pip3 install --upgrade pip 
+RUN pip3 install --upgrade setuptools 
+RUN pip3 install pandas seaborn pyyaml statsmodels pandoc-plantuml-filter pygments-mathematica 
 
 ADD entry.sh /entry.sh
 
