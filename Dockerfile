@@ -19,6 +19,13 @@ RUN apt-get update -q && apt-get install -qy --no-install-recommends --no-instal
   perl \
   python-pygments \
   tar \
+  pandoc \
+  pandoc-citeproc \
+  pandoc-citeproc-preamble \
+  pandoc-plantuml-filter \
+  pandoc-sidenote \
+  python3-pypandoc \
+  python3-pandocfilters \
   fonts-freefont-ttf \
   fonts-font-awesome \
   wget \
