@@ -103,6 +103,61 @@ RUN tlmgr update --self
 
 RUN tlmgr update --all
 
+RUN tlmgr install amsfonts \
+              amsmath \
+              babel \
+              booktabs \
+              fancyvrb \
+              geometry \
+              graphics \
+              hyperref \
+              iftex \
+              listings \
+              lm \
+              lm-math \
+              logreq \
+              oberdiek \
+              setspace \
+              tools \
+              ulem \
+              unicode-math \
+              xcolor \
+              || exit 1
+
+# Needed for when --highlight-style used with something other than pygments.
+RUN tlmgr install framed || exit 1
+
+################################################################################
+# Install extra packages for XeTex, LuaTex, and BibLaTex.                      #
+################################################################################
+RUN tlmgr install bidi \
+              csquotes \
+              fontspec \
+              luatex \
+              lualatex-math \
+              mathspec \
+              microtype \
+              pdftexcmds \
+              polyglossia \
+              upquote \
+              xecjk \
+              xetex \
+              || exit 1
+
+# Make sure all reference backend options are installed
+RUN tlmgr install biber \
+              biblatex \
+              bibtex \
+              natbib \
+              || exit 1
+
+# These packages were identified by the tests, they are likely dependencies of
+# dependencies that are not encoded well.
+RUN tlmgr install footnotehyper \
+              letltxmacro \
+              xurl \
+              || exit 1
+              
 RUN pip3 install --upgrade pip 
 RUN pip3 install --upgrade setuptools 
 RUN pip3 install pandas seaborn pyyaml statsmodels pandoc-plantuml-filter pygments-mathematica 
